@@ -81,7 +81,6 @@ function Trips() {
             id='trip-length'
             type='number'
             name='trip_length'
-            required
             onChange={handleChange}
             value={formData.trip_length}
           />
@@ -91,7 +90,6 @@ function Trips() {
             id='date'
             type='date'
             name='date'
-            required
             onChange={handleChange}
             value={formData.date}
           />
@@ -100,7 +98,6 @@ function Trips() {
           <textarea
             id='description'
             name='description'
-            required
             onChange={handleChange}
             value={formData.description}
           ></textarea>
