@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import NotFound from './pages/NotFound'
@@ -17,6 +18,14 @@ function RegisterAndLogout() {
 }
 
 function App() {
+  const [isAuthorized, setIsAuthorized] = useState(null)
+
+  useEffect(() => {
+    if (localStorage.length) {
+      setIsAuthorized(true)
+    }
+  }, [])
+
   return (
     <>
       <BrowserRouter>
@@ -24,12 +33,16 @@ function App() {
           <Route
             path='/trips'
             element={
-              <ProtectedRoute>
+              <ProtectedRoute
+                isAuthorized={isAuthorized}
+                setIsAuthorized={setIsAuthorized}
+              >
                 <Trips />
               </ProtectedRoute>
             }
           />
-          <Route path='/' element={<Home />} />
+
+          <Route path='/' element={<Home isAuthorized={isAuthorized} />} />
           <Route path='/login' element={<Login />} />
           <Route path='/logout' element={<Logout />} />
           <Route path='/register' element={<RegisterAndLogout />} />
