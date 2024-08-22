@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import api from '../api'
+import TripList from '../components/TripList.jsx'
 
 function Trips() {
   const [trips, setTrips] = useState([])
@@ -9,8 +10,6 @@ function Trips() {
     date: '',
     description: '',
   })
-
-  console.log(formData)
 
   useEffect(() => {
     getTrips()
@@ -22,7 +21,6 @@ function Trips() {
       .then((res) => res.data)
       .then((data) => {
         setTrips(data)
-        console.log(data)
       })
       .catch((e) => alert(e))
   }
@@ -60,8 +58,10 @@ function Trips() {
 
   return (
     <div>
-      <h1>Your Trips</h1>
-      <section></section>
+      <section>
+        <h2>Your Trips</h2>
+        <TripList trips={trips} />
+      </section>
       <section>
         <h2>Add a Trip</h2>
         <form onSubmit={createTrip}>
