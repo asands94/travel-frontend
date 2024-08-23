@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function TripList({ trips, deleteTrip }) {
   const tripList = trips.map((trip) => (
     <div key={trip.id}>
@@ -15,6 +17,7 @@ function TripList({ trips, deleteTrip }) {
       </p>
       <p>{trip.description}</p>
       <button onClick={() => deleteTrip(trip.id)}>Delete Trip</button>
+      <Link to={`/trip/update/${trip.id}`}>Edit Trip</Link>
     </div>
   ))
   return <div>{tripList}</div>

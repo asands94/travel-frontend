@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import api from '../api'
+import api from '../api.js'
 import TripList from '../components/TripList.jsx'
+import TripForm from '../components/TripForm.jsx'
 
 function Trips() {
   const [trips, setTrips] = useState([])
@@ -64,45 +65,12 @@ function Trips() {
       </section>
       <section>
         <h2>Add a Trip</h2>
-        <form onSubmit={createTrip}>
-          <label htmlFor='location'>Location:</label>
-
-          <input
-            id='location'
-            type='text'
-            name='location'
-            required
-            onChange={handleChange}
-            value={formData.location}
-          />
-          <label htmlFor='trip-length'>Trip Length:</label>
-
-          <input
-            id='trip-length'
-            type='number'
-            name='trip_length'
-            onChange={handleChange}
-            value={formData.trip_length}
-          />
-          <label htmlFor='date'>Date:</label>
-
-          <input
-            id='date'
-            type='date'
-            name='date'
-            onChange={handleChange}
-            value={formData.date}
-          />
-          <label htmlFor='description'>Trip Description:</label>
-
-          <textarea
-            id='description'
-            name='description'
-            onChange={handleChange}
-            value={formData.description}
-          ></textarea>
-          <button type='submit'>Add Trip</button>
-        </form>
+        <TripForm
+          createTrip={createTrip}
+          formData={formData}
+          handleChange={handleChange}
+          method='post'
+        />
       </section>
     </div>
   )
