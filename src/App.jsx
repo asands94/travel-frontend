@@ -12,9 +12,8 @@ function Logout() {
   return <Navigate to='/' />
 }
 
-function RegisterAndLogout() {
-  localStorage.clear()
-  return <Register />
+function RegisterAndLogout({ isAuthorized }) {
+  return <Register isAuthorized={isAuthorized} />
 }
 
 function App() {
@@ -43,9 +42,15 @@ function App() {
           />
 
           <Route path='/' element={<Home isAuthorized={isAuthorized} />} />
-          <Route path='/login' element={<Login />} />
+          <Route
+            path='/login'
+            element={<Login isAuthorized={isAuthorized} />}
+          />
           <Route path='/logout' element={<Logout />} />
-          <Route path='/register' element={<RegisterAndLogout />} />
+          <Route
+            path='/register'
+            element={<RegisterAndLogout isAuthorized={isAuthorized} />}
+          />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>

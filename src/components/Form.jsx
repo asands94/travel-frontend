@@ -2,6 +2,7 @@ import { useState } from 'react'
 import api from '../api'
 import { useNavigate } from 'react-router-dom'
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants'
+import Loading from './Loading'
 
 function Form({ route, method }) {
   const [formData, setFormData] = useState({
@@ -62,6 +63,7 @@ function Form({ route, method }) {
         onChange={handleChange}
         placeholder='Password'
       />
+      {loading && <Loading />}
       <button type='submit'>{name}</button>
     </form>
   )
