@@ -27,7 +27,7 @@ function Trips() {
 
   const deleteTrip = (id) => {
     api
-      .delete(`/api/trips/delete/${id}/`)
+      .delete(`/api/trip/delete/${id}/`)
       .then((res) => {
         if (res.status === 204) alert('Trip deleted')
         else alert('Failed to delete trip')
@@ -60,7 +60,7 @@ function Trips() {
     <div>
       <section>
         <h2>Your Trips</h2>
-        <TripList trips={trips} />
+        <TripList trips={trips} deleteTrip={deleteTrip} />
       </section>
       <section>
         <h2>Add a Trip</h2>
