@@ -1,4 +1,4 @@
-import api from '../api'
+import api from './api'
 
 export const getTrips = async () => {
   const res = await api.get('/api/trips/')
@@ -12,5 +12,10 @@ export const deleteTrip = async (id) => {
 
 export const createTrip = async (formData) => {
   const res = await api.post('/api/trips/', formData)
+  return res.data
+}
+
+export const updateTrip = async (formData, id) => {
+  const res = await api.put(`/api/trip/update/${id}/`, formData)
   return res.data
 }

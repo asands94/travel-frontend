@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-function TripForm({ handleCreate, method, trips }) {
+function TripForm({ handleCreate, handleUpdate, method, trips }) {
   const [formData, setFormData] = useState({
     location: '',
     trip_length: 0,
@@ -11,9 +11,20 @@ function TripForm({ handleCreate, method, trips }) {
 
   const { id } = useParams()
 
-  const singleTrip = trips.find((trip) => {
-    return Number(trip.id) === Number(id)
-  })
+  useEffect(() => {
+    const prefillFormData = () => {
+      const trip = trips.find((trip) => trip.id === Number(id))
+      setFormData({
+        location: trip?.location,
+        trip_length: trip?.trip_length,
+        date: trip?.date,
+        description: trip?.description,
+      })
+    }
+    if (trips?.length) {
+      prefillFormData()
+    }
+  }, [trips, id])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -23,26 +34,30 @@ function TripForm({ handleCreate, method, trips }) {
     }))
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (method === 'post') {
+      handleCreate(formData)
+    } else {
+      handleUpdate(formData, id)
+    }
+  }
+
   const title = method === 'post' ? 'Add a Trip' : 'Update Trip'
   return (
     <>
       <h2>{title}</h2>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault()
-          handleCreate(formData)
-        }}
-      >
+      <form onSubmit={handleSubmit}>
         <label htmlFor='location'>Location:</label>
-
         <input
           id='location'
           type='text'
           name='location'
           required
           onChange={handleChange}
-          value={method === 'post' ? formData?.location : singleTrip?.location}
+          value={formData.location}
         />
+
         <label htmlFor='trip-length'>Trip Length:</label>
 
         <input
@@ -50,9 +65,7 @@ function TripForm({ handleCreate, method, trips }) {
           type='number'
           name='trip_length'
           onChange={handleChange}
-          value={
-            method === 'post' ? formData?.trip_length : singleTrip?.trip_length
-          }
+          value={formData.trip_length}
         />
         <label htmlFor='date'>Date:</label>
 
@@ -61,7 +74,7 @@ function TripForm({ handleCreate, method, trips }) {
           type='date'
           name='date'
           onChange={handleChange}
-          value={method === 'post' ? formData?.date : singleTrip?.date}
+          value={formData.date}
         />
         <label htmlFor='description'>Trip Description:</label>
 
@@ -69,9 +82,7 @@ function TripForm({ handleCreate, method, trips }) {
           id='description'
           name='description'
           onChange={handleChange}
-          value={
-            method === 'post' ? formData?.description : singleTrip?.description
-          }
+          value={formData.description}
         ></textarea>
         <button type='submit'>{title}</button>
       </form>

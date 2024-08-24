@@ -2,7 +2,7 @@
 // import { getTrips } from '../services/trips.js'
 // import TripList from '../components/TripList.jsx'
 // import TripForm from '../components/TripForm.jsx'
-import api from '../api.js'
+import api from '../services/api.js'
 import { Link } from 'react-router-dom'
 
 // function Trips({ trips }) {
