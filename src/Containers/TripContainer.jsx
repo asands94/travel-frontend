@@ -3,7 +3,6 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import { getTrips, createTrip } from '../services/trips'
 import ProtectedRoute from '../components/ProtectedRoute'
 import Trips from '../pages/TripList'
-import TripUpdate from '../pages/TripUpdate'
 import TripForm from '../components/TripForm'
 import NotFound from '../pages/NotFound'
 
