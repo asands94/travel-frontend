@@ -1,4 +1,3 @@
-import api from '../services/api.js'
 import { Link } from 'react-router-dom'
 
 function TripList({ trips, handleDelete }) {
