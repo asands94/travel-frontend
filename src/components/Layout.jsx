@@ -1,11 +1,18 @@
+import { Link } from 'react-router-dom'
+
 function Layout({ children }) {
   return (
     <div>
       <header>
         <nav>
           <ul>
-            <li>Home</li>
-            <li>Add Trip</li>
+            <li>
+              <Link to='/trips'>Home</Link>
+            </li>
+            <li>
+              {' '}
+              <Link to='/trip/add'>Add a Trip</Link>
+            </li>
           </ul>
         </nav>
       </header>
