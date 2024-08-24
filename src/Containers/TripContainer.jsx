@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import { getTrips, createTrip, updateTrip } from '../services/trips'
+import { getTrips, createTrip, updateTrip, deleteTrip } from '../services/trips'
 import ProtectedRoute from '../components/ProtectedRoute'
 import Trips from '../pages/TripList'
 import TripForm from '../components/TripForm'
@@ -35,6 +35,11 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
     navigate('/trips')
   }
 
+  const handleDelete = async (id) => {
+    await deleteTrip(id)
+    setTrips((prevState) => prevState.filter((trip) => trip.id !== id))
+  }
+
   return (
     <Routes>
       <Route
@@ -44,7 +49,7 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
             isAuthorized={isAuthorized}
             setIsAuthorized={setIsAuthorized}
           >
-            <Trips trips={trips} />
+            <Trips trips={trips} handleDelete={handleDelete} />
           </ProtectedRoute>
         }
       />
