@@ -58,7 +58,7 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
           value={formData.location}
         />
 
-        <label htmlFor='trip-length'>Trip Length:</label>
+        <label htmlFor='trip-length'>Trip Length (in days):</label>
 
         <input
           id='trip-length'

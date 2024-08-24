@@ -49,8 +49,6 @@ function App() {
             path='/login'
             element={<Login isAuthorized={isAuthorized} />}
           />
-
-          {/* <Route path='*' element={<NotFound />} /> */}
         </Routes>
       </Layout>
     </>
