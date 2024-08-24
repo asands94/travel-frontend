@@ -62,17 +62,6 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
         }
       />
 
-      {/* <Route
-        path='/trip/update/:id'
-        element={
-          <ProtectedRoute
-            isAuthorized={isAuthorized}
-            setIsAuthorized={setIsAuthorized}
-          >
-            <TripUpdate trips={trips} />
-          </ProtectedRoute>
-        }
-      /> */}
       <Route path='*' element={<NotFound />} />
     </Routes>
   )
