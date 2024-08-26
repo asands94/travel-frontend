@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
 
-function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
+function ItineraryForm({
+  handleCreate,
+  handleUpdateItinerary,
+  method,
+  itineraries,
+}) {
   const { id } = useParams()
   const [formData, setFormData] = useState({
     location: '',
@@ -12,10 +17,13 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
   })
 
   const location = useLocation()
+  const navigate = useNavigate()
+
+  const it = itineraries.find((it) => it.id === Number(id))
+  console.log(itineraries)
 
   useEffect(() => {
     const prefillFormData = () => {
-      const it = itineraries.find((it) => it.id === Number(id))
       setFormData({
         location: it?.location,
         time: it?.time,
@@ -49,7 +57,8 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
         priority: 'H',
       })
     } else {
-      handleUpdate(formData, id)
+      handleUpdateItinerary(formData, id)
+      navigate(`/trip/${it.trip}`)
     }
   }
 

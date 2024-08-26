@@ -12,6 +12,7 @@ import Trips from '../pages/TripList'
 import TripDetail from '../pages/TripDetail'
 import TripForm from '../components/TripForm'
 import NotFound from '../pages/NotFound'
+import ItineraryForm from '../components/itineraryForm'
 
 function TripContainer({ isAuthorized, setIsAuthorized }) {
   const [trips, setTrips] = useState([])
@@ -53,6 +54,15 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
     navigate('/trips')
   }
 
+  const handleUpdateItinerary = async (formData, id) => {
+    const itineraryData = await updateItinerary(formData, id)
+    setItineraries((prevState) =>
+      prevState.map((it) => {
+        return it.id === Number(id) ? itineraryData : it
+      })
+    )
+  }
+
   const handleDelete = async (id) => {
     await deleteTrip(id)
     setTrips((prevState) => prevState.filter((trip) => trip.id !== id))
@@ -90,6 +100,22 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
               handleCreate={handleCreateItinerary}
               handleDelete={handleDelete}
               handleDeleteItinerary={handleDeleteItinerary}
+              handleUpdateItinerary={handleUpdateItinerary}
+            />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/itinerary/update/:id'
+        element={
+          <ProtectedRoute
+            isAuthorized={isAuthorized}
+            setIsAuthorized={setIsAuthorized}
+          >
+            <ItineraryForm
+              handleUpdateItinerary={handleUpdateItinerary}
+              method='put'
+              itineraries={itineraries}
             />
           </ProtectedRoute>
         }
