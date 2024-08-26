@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 
 function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
   const { id } = useParams()
@@ -10,6 +10,8 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
     description: '',
     priority: 'H',
   })
+
+  const location = useLocation()
 
   useEffect(() => {
     const prefillFormData = () => {
@@ -22,7 +24,7 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
         priority: it?.priority,
       })
     }
-    if (itineraries?.length) {
+    if (location.pathname !== `/trip/${id}`) {
       prefillFormData()
     }
   }, [itineraries, id])
@@ -39,6 +41,13 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
     e.preventDefault()
     if (method === 'post') {
       handleCreate(formData, id)
+      setFormData({
+        location: '',
+        time: '',
+        date: '',
+        description: '',
+        priority: 'H',
+      })
     } else {
       handleUpdate(formData, id)
     }
@@ -88,8 +97,13 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
 
         <label htmlFor='priority'>Priority:</label>
 
-        <select name='priority' id='priority' onChange={handleChange}>
-          <option value='H'>High</option>
+        <select
+          name='priority'
+          id='priority'
+          onChange={handleChange}
+          value={formData.priority}
+        >
+          <option defaultValue='H'>High</option>
           <option value='M'>Medium</option>
           <option value='L'>Low</option>
         </select>
