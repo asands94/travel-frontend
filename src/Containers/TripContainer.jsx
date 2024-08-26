@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { getTrips, createTrip, updateTrip, deleteTrip } from '../services/trips'
+import {
+  getItineraries,
+  deleteItinerary,
+  createItinerary,
+  updateItinerary,
+} from '../services/itineraries'
 import ProtectedRoute from '../components/ProtectedRoute'
 import Trips from '../pages/TripList'
+import TripDetail from '../pages/TripDetail'
 import TripForm from '../components/TripForm'
 import NotFound from '../pages/NotFound'
 
 function TripContainer({ isAuthorized, setIsAuthorized }) {
   const [trips, setTrips] = useState([])
+  const [itineraries, setItineraries] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -17,6 +25,11 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
   const fetchTrips = async () => {
     const allTrips = await getTrips()
     setTrips(allTrips)
+  }
+
+  const fetchItineraries = async (id) => {
+    const allItineraries = await getItineraries(id)
+    setItineraries(allItineraries)
   }
 
   const handleCreate = async (formData) => {
@@ -50,6 +63,23 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
             setIsAuthorized={setIsAuthorized}
           >
             <Trips trips={trips} handleDelete={handleDelete} />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path='/trip/:id'
+        element={
+          <ProtectedRoute
+            isAuthorized={isAuthorized}
+            setIsAuthorized={setIsAuthorized}
+          >
+            <TripDetail
+              trips={trips}
+              handleDelete={handleDelete}
+              itineraries={itineraries}
+              fetchItineraries={fetchItineraries}
+              setItineraries={setItineraries}
+            />
           </ProtectedRoute>
         }
       />
