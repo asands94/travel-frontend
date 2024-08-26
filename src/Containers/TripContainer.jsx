@@ -32,10 +32,15 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
     setItineraries(allItineraries)
   }
 
-  const handleCreate = async (formData) => {
+  const handleCreateTrip = async (formData) => {
     const tripData = await createTrip(formData)
     setTrips((prevState) => [...prevState, tripData])
     navigate('/trips')
+  }
+
+  const handleCreateItinerary = async (formData, id) => {
+    const itineraryData = await createItinerary(formData, id)
+    setItineraries((prevState) => [...prevState, itineraryData])
   }
 
   const handleUpdate = async (formData, id) => {
@@ -53,6 +58,10 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
     setTrips((prevState) => prevState.filter((trip) => trip.id !== id))
   }
 
+  const handleDeleteItinerary = async (id) => {
+    await deleteItinerary(id)
+    setItineraries((prevState) => prevState.filter((it) => it.id !== id))
+  }
   return (
     <Routes>
       <Route
@@ -75,10 +84,12 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
           >
             <TripDetail
               trips={trips}
-              handleDelete={handleDelete}
               itineraries={itineraries}
               fetchItineraries={fetchItineraries}
               setItineraries={setItineraries}
+              handleCreate={handleCreateItinerary}
+              handleDelete={handleDelete}
+              handleDeleteItinerary={handleDeleteItinerary}
             />
           </ProtectedRoute>
         }
@@ -90,7 +101,11 @@ function TripContainer({ isAuthorized, setIsAuthorized }) {
             isAuthorized={isAuthorized}
             setIsAuthorized={setIsAuthorized}
           >
-            <TripForm trips={trips} method='post' handleCreate={handleCreate} />
+            <TripForm
+              trips={trips}
+              method='post'
+              handleCreate={handleCreateTrip}
+            />
           </ProtectedRoute>
         }
       />

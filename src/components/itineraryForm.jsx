@@ -13,12 +13,13 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
 
   useEffect(() => {
     const prefillFormData = () => {
-      const trip = itineraries.find((trip) => trip.id === Number(id))
+      const it = itineraries.find((it) => it.id === Number(id))
       setFormData({
-        location: trip?.location,
-        time: trip?.time,
-        date: trip?.date,
-        description: trip?.description,
+        location: it?.location,
+        time: it?.time,
+        date: it?.date,
+        description: it?.description,
+        priority: it?.priority,
       })
     }
     if (itineraries?.length) {
@@ -61,7 +62,7 @@ function ItineraryForm({ handleCreate, handleUpdate, method, itineraries }) {
         <label htmlFor='time'>Time:</label>
 
         <input
-          id='trip-length'
+          id='time'
           type='time'
           name='time'
           onChange={handleChange}

@@ -4,7 +4,15 @@ import ItineraryForm from '../components/itineraryForm'
 import { createItinerary } from '../services/itineraries'
 import Itineraries from '../components/Itineraries'
 
-function TripDetail({ trips, itineraries, fetchItineraries, setItineraries }) {
+function TripDetail({
+  trips,
+  itineraries,
+  fetchItineraries,
+  handleCreate,
+  setItineraries,
+  handleDelete,
+  handleDeleteItinerary,
+}) {
   const { id } = useParams()
 
   useEffect(() => {
@@ -14,11 +22,6 @@ function TripDetail({ trips, itineraries, fetchItineraries, setItineraries }) {
   const trip = trips.find((trip) => trip.id === Number(id))
   if (!trip) {
     return <h1>Loading...</h1>
-  }
-
-  const handleCreate = async (formData, id) => {
-    const itineraryData = await createItinerary(formData, id)
-    setItineraries((prevState) => [...prevState, itineraryData])
   }
 
   return (
@@ -44,7 +47,11 @@ function TripDetail({ trips, itineraries, fetchItineraries, setItineraries }) {
       <section>
         <h2>Itinerary</h2>
         {itineraries.length ? (
-          <Itineraries itineraries={itineraries} />
+          <Itineraries
+            itineraries={itineraries}
+            setItineraries={setItineraries}
+            handleDeleteItinerary={handleDeleteItinerary}
+          />
         ) : (
           'no upcoming plans'
         )}
