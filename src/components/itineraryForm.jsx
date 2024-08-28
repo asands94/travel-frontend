@@ -20,7 +20,6 @@ function ItineraryForm({
   const navigate = useNavigate()
 
   const it = itineraries.find((it) => it.id === Number(id))
-  console.log(itineraries)
 
   useEffect(() => {
     const prefillFormData = () => {
