@@ -63,9 +63,12 @@ function ItineraryForm({
 
   const title = method === 'post' ? 'Add Itinerary' : 'Update Itinerary'
   return (
-    <>
+    <section className='flex flex-col items-center'>
       <h2>{title}</h2>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+        className='flex flex-col items-center bg-primary rounded-lg w-96 shadow py-4'
+      >
         <label htmlFor='location'>Location:</label>
         <input
           id='location'
@@ -115,9 +118,14 @@ function ItineraryForm({
           <option value='M'>Medium</option>
           <option value='L'>Low</option>
         </select>
-        <button type='submit'>{title}</button>
+        <button
+          type='submit'
+          className='bg-secondary rounded-lg py-2 px-3 text-white font-medium hover:bg-secondaryHover mt-4'
+        >
+          {title}
+        </button>
       </form>
-    </>
+    </section>
   )
 }
 

@@ -27,22 +27,39 @@ function TripDetail({
   return (
     <>
       <h2>Trip Detail</h2>
-      <section className='trip-card'>
-        <p>{trip.location}</p>
-        <p>{trip.trip_length}</p>
-        <p>
-          {' '}
-          {new Date(trip.date).toLocaleDateString('en-us', {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}
-        </p>
+      <section
+        className='w-full lg:w-fit p-6 bg-primary rounded-lg shadow'
+        key={trip.id}
+      >
+        <p className='font-bold'>{trip.location}</p>
+        {trip.date && (
+          <p>
+            {new Date(trip.date).toLocaleDateString('en-us', {
+              weekday: 'short',
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric',
+            })}
+          </p>
+        )}
+        <p>{trip.trip_length} day trip</p>
+
         <p>{trip.description}</p>
 
-        <button onClick={() => handleDelete(trip.id)}>Delete Trip</button>
-        <Link to={`/trip/update/${trip.id}`}>Edit Trip</Link>
+        <div className='mt-4 flex mt-6'>
+          <button
+            className='bg-danger rounded-lg py-2 px-3 text-white font-medium hover:bg-dangerHover mx-2'
+            onClick={() => handleDelete(trip.id)}
+          >
+            Delete Trip
+          </button>
+          <Link
+            className=' rounded-lg py-2 px-3 font-medium hover:text-secondary'
+            to={`/trip/update/${trip.id}`}
+          >
+            Edit Trip
+          </Link>
+        </div>
       </section>
       <section>
         <h2>Itinerary</h2>

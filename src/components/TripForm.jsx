@@ -45,9 +45,12 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
 
   const title = method === 'post' ? 'Add a Trip' : 'Update Trip'
   return (
-    <>
-      <h2>{title}</h2>
-      <form onSubmit={handleSubmit}>
+    <section className='flex flex-col items-center'>
+      <h1>{title}</h1>
+      <form
+        onSubmit={handleSubmit}
+        className='flex flex-col items-center bg-primary rounded-lg w-96 shadow py-4'
+      >
         <label htmlFor='location'>Location:</label>
         <input
           id='location'
@@ -84,9 +87,14 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
           onChange={handleChange}
           value={formData.description}
         ></textarea>
-        <button type='submit'>{title}</button>
+        <button
+          type='submit'
+          className='bg-secondary rounded-lg py-2 px-3 text-white font-medium hover:bg-secondaryHover mt-4'
+        >
+          {title}
+        </button>
       </form>
-    </>
+    </section>
   )
 }
 

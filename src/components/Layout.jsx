@@ -2,15 +2,17 @@ import { Link } from 'react-router-dom'
 
 const loggedInNav = () => {
   return (
-    <nav>
-      <ul>
+    <nav className='flex justify-between items-center h-20'>
+      <ul className='bg-pure rounded-full p-4'>
         <li>
-          <Link to='/trips'>Home</Link>
+          <Link to='/trips'>Travel Planner</Link>
         </li>
+      </ul>
+      <ul className='flex bg-pure rounded-full p-4'>
         <li>
           <Link to='/trip/add'>Add a Trip</Link>
         </li>
-        <li>
+        <li className='ml-5'>
           <Link to='/logout'>Logout</Link>
         </li>
       </ul>
@@ -38,11 +40,11 @@ const loggedOutNav = () => {
 
 function Layout({ children }) {
   return (
-    <div>
+    <>
       <header>{localStorage.length ? loggedInNav() : loggedOutNav()}</header>
-      {children}
+      <main>{children}</main>
       <footer></footer>
-    </div>
+    </>
   )
 }
 
