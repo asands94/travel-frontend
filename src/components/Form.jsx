@@ -57,6 +57,7 @@ function Form({ route, method }) {
           Username:
         </label>
         <input
+          className='mt-6'
           id='username'
           type='text'
           value={formData.username}
@@ -78,7 +79,7 @@ function Form({ route, method }) {
         {loading && <Loading />}
         <button
           type='submit'
-          className='bg-primary rounded-full py-3 px-body mt-4 font-medium text-white'
+          className='bg-primary rounded-full py-3 px-body font-medium text-white'
         >
           {name}
         </button>

@@ -7,8 +7,9 @@
     @apply bg-white;
   }
   form > input,
-  form > textarea {
-    @apply mt-6;
+  form > textarea,
+  form > select {
+    @apply mb-6;
     @apply p-2;
     @apply rounded;
   }

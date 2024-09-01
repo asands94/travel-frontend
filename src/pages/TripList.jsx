@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function TripList({ trips, handleDelete }) {
   const tripList = trips.map((trip) => (
     <div
-      className='w-full p-6 bg-primary rounded-lg shadow flex flex-col'
+      className='w-full p-6 bg-secondary rounded-lg shadow-md flex flex-col'
       key={trip.id}
     >
       <Link to={`/trip/${trip.id}`}>
@@ -24,13 +24,13 @@ function TripList({ trips, handleDelete }) {
 
       <div className='mt-6 self-center'>
         <button
-          className='bg-danger rounded-lg py-2 px-3 text-white font-medium hover:bg-dangerHover mx-2'
+          className='bg-primary rounded-lg py-2 px-3 text-white font-medium hover:bg-dangerHover mx-2'
           onClick={() => handleDelete(trip.id)}
         >
           Delete Trip
         </button>
         <Link
-          className='rounded-lg py-2 px-3 font-medium hover:text-secondary'
+          className='rounded-lg py-2 px-3 font-medium hover:text-primary'
           to={`/trip/update/${trip.id}`}
         >
           Edit Trip
@@ -39,10 +39,10 @@ function TripList({ trips, handleDelete }) {
     </div>
   ))
   return (
-    <>
-      <h1>Upcoming Trips</h1>
-      <section className='grid grid-cols-4 gap-4'> {tripList}</section>
-    </>
+    <section className='flex flex-col items-center'>
+      <h1 className='text-2xl font-semibold mb-body'>Upcoming Trips</h1>
+      <section className='grid grid-cols-4 gap-4 '>{tripList}</section>
+    </section>
   )
 }
 

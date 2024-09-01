@@ -63,14 +63,18 @@ function ItineraryForm({
 
   const title = method === 'post' ? 'Add Itinerary' : 'Update Itinerary'
   return (
-    <section className='flex flex-col items-center'>
-      <h2>{title}</h2>
+    <section className='flex flex-col items-center justify-center'>
       <form
         onSubmit={handleSubmit}
-        className='flex flex-col items-center bg-primary rounded-lg w-96 shadow py-4'
+        className='flex flex-col items-center bg-secondary rounded-lg w-96 shadow-md py-4'
       >
-        <label htmlFor='location'>Location:</label>
+        <h2 className='font-semibold'>{title}</h2>
+        <label htmlFor='location' hidden>
+          Location:
+        </label>
         <input
+          className='mt-6'
+          placeholder='Location'
           id='location'
           type='text'
           name='location'
@@ -79,7 +83,9 @@ function ItineraryForm({
           value={formData.location}
         />
 
-        <label htmlFor='time'>Time:</label>
+        <label htmlFor='time' hidden>
+          Time:
+        </label>
 
         <input
           id='time'
@@ -88,7 +94,9 @@ function ItineraryForm({
           onChange={handleChange}
           value={formData.time}
         />
-        <label htmlFor='date'>Date:</label>
+        <label htmlFor='date' hidden>
+          Date:
+        </label>
 
         <input
           id='date'
@@ -97,16 +105,19 @@ function ItineraryForm({
           onChange={handleChange}
           value={formData.date}
         />
-        <label htmlFor='description'>Description:</label>
+        <label htmlFor='description' hidden>
+          Description:
+        </label>
 
         <textarea
+          placeholder='Description'
           id='description'
           name='description'
           onChange={handleChange}
           value={formData.description}
         ></textarea>
 
-        <label htmlFor='priority'>Priority:</label>
+        <label htmlFor='priority'>Priority Level:</label>
 
         <select
           name='priority'
@@ -120,7 +131,7 @@ function ItineraryForm({
         </select>
         <button
           type='submit'
-          className='bg-secondary rounded-lg py-2 px-3 text-white font-medium hover:bg-secondaryHover mt-4'
+          className='bg-primary rounded-full py-3 px-body font-medium text-white'
         >
           {title}
         </button>

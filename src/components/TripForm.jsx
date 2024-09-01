@@ -55,6 +55,7 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
           Location:
         </label>
         <input
+          className='mt-6'
           placeholder='Location'
           id='location'
           type='text'
@@ -100,7 +101,7 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
         ></textarea>
         <button
           type='submit'
-          className='bg-primary rounded-full py-3 px-body mt-4 font-medium text-white'
+          className='bg-primary rounded-full py-3 px-body font-medium text-white'
         >
           {title}
         </button>
