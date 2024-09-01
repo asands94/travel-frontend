@@ -47,7 +47,9 @@ function Layout({ children, isAuthorized }) {
         {isAuthorized ? loggedInNav() : loggedOutNav()}
       </header>
       <main>{children}</main>
-      <footer></footer>
+      <footer className='bg-pure'>
+        <p className='mx-body'>Copyright © 2024 Trip Planner.</p>
+      </footer>
     </>
   )
 }

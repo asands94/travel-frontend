@@ -25,7 +25,7 @@ function GuestHome() {
         </div>
       </section>
 
-      <section className='bg-secondary flex flex-col items-center my-body'>
+      <section className='bg-secondary flex flex-col items-center mt-body'>
         <div className='flex justify-center w-full h-full px-body py-body'>
           <div className='flex flex-col items-center w-full'>
             <h3 className='pb-5 font-semibold'>Add a Trip</h3>
