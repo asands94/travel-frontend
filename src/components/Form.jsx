@@ -47,25 +47,43 @@ function Form({ route, method }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>{name}</h1>
-      <input
-        type='text'
-        value={formData.username}
-        name='username'
-        onChange={handleChange}
-        placeholder='Username'
-      />
-      <input
-        type='password'
-        value={formData.password}
-        name='password'
-        onChange={handleChange}
-        placeholder='Password'
-      />
-      {loading && <Loading />}
-      <button type='submit'>{name}</button>
-    </form>
+    <section className='flex flex-col items-center h-[calc(100vh-5rem-24px)] justify-center'>
+      <form
+        onSubmit={handleSubmit}
+        className='flex flex-col items-center bg-secondary rounded-lg w-96 shadow-md py-4'
+      >
+        <h1 className='font-semibold'>{name}</h1>
+        <label htmlFor='username' hidden>
+          Username:
+        </label>
+        <input
+          id='username'
+          type='text'
+          value={formData.username}
+          name='username'
+          onChange={handleChange}
+          placeholder='Username'
+        />
+        <label htmlFor='password' hidden>
+          Password:
+        </label>
+        <input
+          id='password'
+          type='password'
+          value={formData.password}
+          name='password'
+          onChange={handleChange}
+          placeholder='Password'
+        />
+        {loading && <Loading />}
+        <button
+          type='submit'
+          className='bg-primary rounded-full py-3 px-body mt-4 font-medium text-white'
+        >
+          {name}
+        </button>
+      </form>
+    </section>
   )
 }
 

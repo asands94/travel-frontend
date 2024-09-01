@@ -6,7 +6,9 @@
   body {
     @apply bg-white;
   }
-  form > label {
+  form > input {
     @apply mt-6;
+    @apply p-2;
+    @apply rounded;
   }
 }
