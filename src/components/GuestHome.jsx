@@ -2,14 +2,19 @@ import { Link } from 'react-router-dom'
 function GuestHome() {
   return (
     <>
-      <section className='flex flex-col items-center'>
+      <section className='flex flex-col items-center mt-10 mx-10'>
         <div className='flex justify-center'>
-          <div className='rounded-lg bg-pure shadow-md p-6 h-32 flex flex-col justify-center'>
-            <h1 className='text-5xl'>Trip Planner</h1>
-            <h2 className='text-3xl'>Keep track of all your upcoming trips.</h2>
+          <div className='rounded-lg flex flex-col justify-center w-1/2'>
+            <h1 className='text-5xl font-semibold'>
+              Plan, Explore, and Track Your Perfect Trip
+            </h1>
+            <h2 className='text-3xl'>
+              From itinerary planning to expense tracking, Trip Planner helps
+              you stay organized and make the most of your adventures.
+            </h2>
           </div>
           <img
-            className='rounded-lg w-1/3'
+            className='rounded-lg w-1/2'
             src='https://api.time.com/wp-content/uploads/2023/06/travel-ai-help-01.jpg'
             alt=''
           />

@@ -23,16 +23,16 @@ const loggedInNav = () => {
 const loggedOutNav = () => {
   return (
     <nav className='flex justify-between items-center h-20'>
-      <ul className='bg-pure rounded-full p-4'>
+      <ul className='p-4'>
         <li>
           <Link to='/'>Travel Planner</Link>
         </li>
       </ul>
-      <ul className='flex bg-pure rounded-full p-4'>
+      <ul className='flex p-4'>
         <li>
           <Link to='/login'>Login</Link>
         </li>
-        <li className='ml-5 text-primary'>
+        <li className='ml-5 text-primary font-semibold'>
           <Link to='/register'>Sign Up</Link>
         </li>
       </ul>
@@ -43,7 +43,7 @@ const loggedOutNav = () => {
 function Layout({ children, isAuthorized }) {
   return (
     <>
-      <header className=''>
+      <header className='bg-pure'>
         {isAuthorized ? loggedInNav() : loggedOutNav()}
       </header>
       <main>{children}</main>
