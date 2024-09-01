@@ -6,9 +6,14 @@
   body {
     @apply bg-white;
   }
-  form > input {
+  form > input,
+  form > textarea {
     @apply mt-6;
     @apply p-2;
     @apply rounded;
   }
+}
+
+form > textarea {
+  resize: none;
 }

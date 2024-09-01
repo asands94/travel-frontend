@@ -45,14 +45,17 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
 
   const title = method === 'post' ? 'Add a Trip' : 'Update Trip'
   return (
-    <section className='flex flex-col items-center'>
-      <h1>{title}</h1>
+    <section className='flex flex-col items-center h-[calc(100vh-5rem-24px)] justify-center'>
       <form
         onSubmit={handleSubmit}
-        className='flex flex-col items-center bg-primary rounded-lg w-96 shadow py-4'
+        className='flex flex-col items-center bg-secondary rounded-lg w-96 shadow-md py-4'
       >
-        <label htmlFor='location'>Location:</label>
+        <h1 className='font-semibold'>{title}</h1>
+        <label htmlFor='location' hidden>
+          Location:
+        </label>
         <input
+          placeholder='Location'
           id='location'
           type='text'
           name='location'
@@ -61,16 +64,21 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
           value={formData.location}
         />
 
-        <label htmlFor='trip-length'>Trip Length (in days):</label>
+        <label htmlFor='trip-length' hidden>
+          Trip Length (in days):
+        </label>
 
         <input
+          placeholder='Trip Length'
           id='trip-length'
           type='number'
           name='trip_length'
           onChange={handleChange}
           value={formData.trip_length}
         />
-        <label htmlFor='date'>Date:</label>
+        <label htmlFor='date' hidden>
+          Date:
+        </label>
 
         <input
           id='date'
@@ -79,9 +87,12 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
           onChange={handleChange}
           value={formData.date}
         />
-        <label htmlFor='description'>Trip Description:</label>
+        <label htmlFor='description' hidden>
+          Trip Description:
+        </label>
 
         <textarea
+          placeholder='Trip Description'
           id='description'
           name='description'
           onChange={handleChange}
@@ -89,7 +100,7 @@ function TripForm({ handleCreate, handleUpdate, method, trips }) {
         ></textarea>
         <button
           type='submit'
-          className='bg-secondary rounded-lg py-2 px-3 text-white font-medium hover:bg-secondaryHover mt-4'
+          className='bg-primary rounded-full py-3 px-body mt-4 font-medium text-white'
         >
           {title}
         </button>
