@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 function GuestHome() {
   return (
     <>
-      <section className='flex flex-col items-center mt-10 mx-10'>
+      <section className='flex flex-col items-center mt-body mx-body'>
         <div className='flex justify-center'>
           <div className='rounded-lg flex flex-col justify-center w-1/2'>
             <h1 className='text-5xl font-semibold'>
@@ -20,14 +20,14 @@ function GuestHome() {
           />
         </div>
 
-        <button className='bg-primary rounded-full py-3 px-10 mt-4 font-medium text-white'>
+        <button className='bg-primary rounded-full py-3 px-body mt-4 font-medium text-white'>
           <Link to='/register'>Sign Up</Link>
         </button>
       </section>
 
-      <section className='bg-secondary flex flex-col items-center my-10'>
-        <div className='flex justify-center p-10 w-full h-full'>
-          <div className='flex flex-col items-center mx-4  w-full'>
+      <section className='bg-secondary flex flex-col items-center my-body'>
+        <div className='flex justify-center w-full h-full px-body py-body'>
+          <div className='flex flex-col items-center w-full'>
             <h3 className='pb-5'>Add a Trip</h3>
             <p className='shadow-md h-32 bg-pure w-full flex flex-col items-center rounded-lg p-5'>
               Effortlessly organize your next adventure by adding your
@@ -36,7 +36,7 @@ function GuestHome() {
             </p>
           </div>
 
-          <div className='flex flex-col items-center mx-4 w-full'>
+          <div className='flex flex-col items-center w-full mx-body'>
             <h3 className='pb-5'>Add Your Itinerary</h3>
             <p className='shadow-md h-32 bg-pure w-full flex flex-col items-center rounded-lg p-5'>
               Map out your entire trip with a personalized itinerary. From
@@ -45,7 +45,7 @@ function GuestHome() {
             </p>
           </div>
 
-          <div className='flex flex-col items-center mx-4  w-full'>
+          <div className='flex flex-col items-center w-full'>
             <h3 className='pb-5'>Add Your Expenses</h3>
             <p className='shadow-md h-32 bg-pure w-full flex flex-col items-center rounded-lg p-5'>
               Keep track of your spending with ease by logging your expenses.
@@ -55,7 +55,7 @@ function GuestHome() {
           </div>
         </div>
 
-        <button className='bg-primary rounded-full py-3 px-10 mt-4 font-medium text-white mb-10'>
+        <button className='bg-primary rounded-full py-3 px-body mt-4 font-medium text-white mb-body'>
           <Link to='/register'>Sign Up</Link>
         </button>
       </section>

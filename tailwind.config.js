@@ -17,7 +17,11 @@ export default {
     opacity: {
       20: '0',
     },
-    extend: {},
+    extend: {
+      spacing: {
+        body: '2.5rem',
+      },
+    },
   },
   plugins: [],
 }

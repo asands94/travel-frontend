@@ -22,7 +22,7 @@ const loggedInNav = () => {
 
 const loggedOutNav = () => {
   return (
-    <nav className='flex justify-between items-center h-20'>
+    <nav className='flex justify-between items-center h-20 mx-body'>
       <ul className='p-4'>
         <li>
           <Link to='/'>Travel Planner</Link>
