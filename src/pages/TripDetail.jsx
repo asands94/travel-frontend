@@ -14,12 +14,13 @@ function TripDetail({
   handleDeleteItinerary,
 }) {
   const [showForm, setShowForm] = useState(false)
+  const [showIt, setShowIt] = useState(false)
   const { id } = useParams()
 
   useEffect(() => {
     fetchItineraries(id)
   }, [])
-
+  console.log(itineraries.length)
   const trip = trips.find((trip) => trip.id === Number(id))
   if (!trip) {
     return <h1>Loading...</h1>
@@ -60,13 +61,32 @@ function TripDetail({
         </div>
       </section>
       <section>
-        <h2>Itinerary</h2>
+        <h2 className='text-2xl font-semibold my-body'>Itinerary</h2>
         {itineraries.length ? (
-          <Itineraries
-            itineraries={itineraries}
-            setItineraries={setItineraries}
-            handleDeleteItinerary={handleDeleteItinerary}
-          />
+          showIt ? (
+            <button
+              className='bg-primary rounded-full py-3 px-body font-medium text-white'
+              onClick={() => setShowIt((prev) => !prev)}
+            >
+              Hide Itineraries
+            </button>
+          ) : (
+            <button
+              className='bg-primary rounded-full py-3 px-body font-medium text-white'
+              onClick={() => setShowIt((prev) => !prev)}
+            >
+              Show Itineraries
+            </button>
+          )
+        ) : null}
+        {itineraries.length ? (
+          showIt ? (
+            <Itineraries
+              itineraries={itineraries}
+              setItineraries={setItineraries}
+              handleDeleteItinerary={handleDeleteItinerary}
+            />
+          ) : null
         ) : (
           'no upcoming plans'
         )}
