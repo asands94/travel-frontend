@@ -5,7 +5,6 @@
 @layer base {
   body {
     @apply bg-white;
-    @apply mx-10;
   }
   form > label {
     @apply mt-6;

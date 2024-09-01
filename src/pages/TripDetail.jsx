@@ -26,7 +26,7 @@ function TripDetail({
 
   return (
     <>
-      <h2>Trip Detail</h2>
+      <h1>Trip Detail</h1>
       <section
         className='w-full lg:w-fit p-6 bg-primary rounded-lg shadow'
         key={trip.id}

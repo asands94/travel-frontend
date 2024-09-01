@@ -22,26 +22,30 @@ const loggedInNav = () => {
 
 const loggedOutNav = () => {
   return (
-    <nav>
-      <ul>
+    <nav className='flex justify-between items-center h-20'>
+      <ul className='bg-pure rounded-full p-4'>
         <li>
-          <Link to='/'>Home</Link>
+          <Link to='/'>Travel Planner</Link>
         </li>
-        <li>
-          <Link to='/register'>Sign Up</Link>
-        </li>
+      </ul>
+      <ul className='flex bg-pure rounded-full p-4'>
         <li>
           <Link to='/login'>Login</Link>
+        </li>
+        <li className='ml-5 text-primary'>
+          <Link to='/register'>Sign Up</Link>
         </li>
       </ul>
     </nav>
   )
 }
 
-function Layout({ children }) {
+function Layout({ children, isAuthorized }) {
   return (
     <>
-      <header>{localStorage.length ? loggedInNav() : loggedOutNav()}</header>
+      <header className=''>
+        {isAuthorized ? loggedInNav() : loggedOutNav()}
+      </header>
       <main>{children}</main>
       <footer></footer>
     </>

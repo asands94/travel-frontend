@@ -27,7 +27,7 @@ function App() {
 
   return (
     <>
-      <Layout>
+      <Layout isAuthorized={isAuthorized}>
         <Routes>
           <Route
             path='*'
