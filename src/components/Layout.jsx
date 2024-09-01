@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom'
 
 const loggedInNav = () => {
   return (
-    <nav className='flex justify-between items-center h-20'>
-      <ul className='bg-pure rounded-full p-4'>
+    <nav className='flex justify-between items-center h-20 mx-body'>
+      <ul className='p-4'>
         <li>
           <Link to='/trips'>Travel Planner</Link>
         </li>
       </ul>
-      <ul className='flex bg-pure rounded-full p-4'>
-        <li>
+      <ul className='flex p-4'>
+        <li className='text-primary font-semibold'>
           <Link to='/trip/add'>Add a Trip</Link>
         </li>
         <li className='ml-5'>
